@@ -4,6 +4,8 @@ import MainPage from '@/components/MainPage'
 import Message from '@/components/Message'
 import List from '@/components/List'
 import User from '@/components/User'
+import Order from '@/components/Order'
+import Sport from '@/components/Sport'
 
 Vue.use(Router)
 
@@ -27,7 +29,19 @@ export default new Router({
     {
       path: '/user/:id',
       name: 'User',
-      component: User
+      component: User,
+      props:true
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order,
+      children:[
+      {
+        path:"sport",
+        component:Sport
+      }
+      ]
     }
   ]
 })

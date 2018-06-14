@@ -22,9 +22,10 @@
           <el-menu-item index="2-4-3">选项3</el-menu-item>
         </el-submenu>
       </el-submenu> -->
-        <el-menu-item index="/msg">消息</el-menu-item>
+      <el-menu-item index="/msg">消息</el-menu-item>
       <el-menu-item index="/list">列表</el-menu-item>
       <el-menu-item index="/user/123">用户</el-menu-item>
+      <el-menu-item index="/order/sport">订单</el-menu-item>
     </el-menu>
     <router-view/>
   </div>
@@ -36,7 +37,7 @@ export default {
   data(){
     return {
       router:true,
-      activeIndex:"1"
+      activeIndex:"1",
     }
   },
   methods: {
@@ -44,9 +45,10 @@ export default {
       // console.log(key, keyPath);
     }
   },
-  watch: { 
+  watch: {
     '$route' (to, from) {
-
+      console.log(to);
+      this.activeIndex = to.path;
       // console.log("from " , from );
       // console.log("to " , to );
     }

@@ -1,9 +1,6 @@
 <template>
   <div>
      {{msg}}
-     <div>
-       <button @click="route"> click me </button>
-     </div>
   </div>
 </template>
 
@@ -11,12 +8,7 @@
 export default {
   data () {
     return {
-      msg: 'Welcome to main page. blablabla....'
-    }
-  },
-  methods:{
-    route(){
-      this.$router.replace("/order/sport");
+      msg: 'this is the sport order page'
     }
   }
 }

@@ -1,11 +1,12 @@
 <template>
   <div>
-    Hello, my name is {{name}}
+    Hello, my name is {{id}}
   </div>
 </template>
 
 <script>
 export default {
+  props:["id"],
   data () {
     return {
       name:this.$route.params.id

@@ -21,7 +21,8 @@ export default {
     }
   },
   mounted(){
-    this.$router.go(-1);
+    // this.$router.push("/order/sport");
+    // this.$router.go(-1);
   }
 }
 </script>
