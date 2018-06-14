@@ -44,7 +44,7 @@ export default {
       // console.log(key, keyPath);
     }
   },
-  watch: {
+  watch: { 
     '$route' (to, from) {
 
       // console.log("from " , from );
