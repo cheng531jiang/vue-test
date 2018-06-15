@@ -1,7 +1,7 @@
 <template>
-  <div>
-    Hello, my name is {{id}}
-  </div>
+    <div>
+      Hello, my name is {{id}}
+    </div>
 </template>
 
 <script>

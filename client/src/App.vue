@@ -37,7 +37,7 @@ export default {
   data(){
     return {
       router:true,
-      activeIndex:"1",
+      activeIndex:this.$route.path,
     }
   },
   methods: {
@@ -47,7 +47,6 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      console.log(to);
       this.activeIndex = to.path;
       // console.log("from " , from );
       // console.log("to " , to );
@@ -65,4 +64,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>

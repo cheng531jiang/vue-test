@@ -9,7 +9,7 @@ import Sport from '@/components/Sport'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: '/',
@@ -45,3 +45,5 @@ export default new Router({
     }
   ]
 })
+router.beforeEach();
+export default router;
