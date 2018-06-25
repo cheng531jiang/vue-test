@@ -24,40 +24,40 @@ const getters = {
   getState: state => {
     return state
   },
-  getUserRoleName: state => {
-    let roleName = { "allRoleName":[]};
-    let idenList = ["reader","editor"];
-    let levelList = ["validator_level_1","validator_level_2","validator_level_3","validator_level_4"];
-    let userObj = {};
-    if (state.user){
-			userObj = state.user;
-    }else {
-      userObj = JSON.parse(localStorage.getItem("user"));
-    }
-   	if (userObj) {
-   		userObj.roles.map((role)=>{
-	    	roleName['allRoleName'].push(role.role_name);
-	    	if( idenList.indexOf(role.role_name) > -1) roleName['idenRoleName'] = role.role_name;
-	    	if( levelList.indexOf(role.role_name) > -1) roleName['levelRoleName'] = role.role_name;
-	    });
-   	}
-    return roleName;
-  },
-  getUserRightName: ( state ) =>{
-  	let rightName = [];
-  	let userObj = {};
-  	if (state.user){
-			userObj = state.user;
-    }else {
-      userObj = JSON.parse(localStorage.getItem("user"));
-    }
-   	if (userObj) {
-   		userObj.rights.map((right)=>{
-	    	rightName.push(right.right_name);
-	    });
-   	}
-   	return rightName;
-  }
+  // getUserRoleName: state => {
+  //   let roleName = { "allRoleName":[]};
+  //   let idenList = ["reader","editor"];
+  //   let levelList = ["validator_level_1","validator_level_2","validator_level_3","validator_level_4"];
+  //   let userObj = {};
+  //   if (state.user){
+	// 		userObj = state.user;
+  //   }else {
+  //     userObj = JSON.parse(localStorage.getItem("user"));
+  //   }
+  //  	if (userObj) {
+  //  		userObj.roles.map((role)=>{
+	//     	roleName['allRoleName'].push(role.role_name);
+	//     	if( idenList.indexOf(role.role_name) > -1) roleName['idenRoleName'] = role.role_name;
+	//     	if( levelList.indexOf(role.role_name) > -1) roleName['levelRoleName'] = role.role_name;
+	//     });
+  //  	}
+  //   return roleName;
+  // },
+  // getUserRightName: ( state ) =>{
+  // 	let rightName = [];
+  // 	let userObj = {};
+  // 	if (state.user){
+	// 		userObj = state.user;
+  //   }else {
+  //     userObj = JSON.parse(localStorage.getItem("user"));
+  //   }
+  //  	if (userObj) {
+  //  		userObj.rights.map((right)=>{
+	//     	rightName.push(right.right_name);
+	//     });
+  //  	}
+  //  	return rightName;
+  // }
 }
 
 const
@@ -97,7 +97,7 @@ const
 const actions = {
   async login({state, commit}, params) {
     try {
-      let {data} = await axios.post('/login', params.data)
+      let {data} = await axios.post('/login', params)
       commit('setUser', data)
     } catch (error) {
       commit('CATALOG_FETCH_USER_FAILURE', error)

@@ -35,7 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors(resHeader));
 
-app.use(session({ secret: 'shhsecret', resave: true, saveUninitialized: true }));
+
+app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
 

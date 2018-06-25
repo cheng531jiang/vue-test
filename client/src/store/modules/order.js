@@ -9,9 +9,9 @@ const getters = {
   currentOrder: state => {
     return state.currentOrder;
   },
-  getState: state => {
-    return state
-  }
+  // getState: state => {
+  //   return state
+  // }
 }
 
 const
