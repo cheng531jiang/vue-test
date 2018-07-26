@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var session    = require('express-session');
 var passport   = require('passport')
-
 var resHeader =  {
   origin: "http://localhost:8080",
   credentials: true
@@ -29,12 +28,23 @@ app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors(resHeader));
 
+///这是后来加的，为了创建session做身份验证
+var config = require('./config/config.js')
+const env = app.get('env') || 'development'
+var sess = config[env].sess
+var sessionStore = null
+  //用MemoryStore的配置
+var MemoryStore = require('memorystore')(session);
+sessionStore = new MemoryStore(config.MemoryOptions);
+
+sess.store = sessionStore;
+///
 
 app.use(session(sess));
 app.use(passport.initialize());

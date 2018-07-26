@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <iframe src="http://www.baidu.com" id="iframe1" scrolling="yes" width="100%" height="500px"></iframe> -->
     <el-menu
       :default-active="activeIndex"
       class="el-menu-demo"

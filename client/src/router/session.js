@@ -5,7 +5,9 @@ const COOKIE_SID = 'cheng-test'
 var util = {}
 
 var sessionExist = function () {
+  console.log("COOKIE_SID=",COOKIE_SID);
   var sid = Cookies.get(COOKIE_SID);
+  console.log("sid=",sid);
   return typeof sid !== 'undefined' & sid != null
   // return true;
 }

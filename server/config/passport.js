@@ -4,13 +4,12 @@ var User = require('../models/user');
 module.exports = function(passport) {
 
   passport.serializeUser(function(user, done) {
+    console.log("serialize usr id=",user.id);
     done(null, user.id);
   });
 
   passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
+    done(null,user)
   });
   //
   // passport.use('local-signup', new LocalStrategy({
@@ -45,7 +44,7 @@ module.exports = function(passport) {
     passReqToCallback: true,
   },
   function(req, email, password, done) {
-    console.log("test1");
+    // console.log("test1");
     // User.findOne({ 'local.email':  email }, function(err, user) {
     //   if (err)
     //       return done(err);
@@ -55,6 +54,21 @@ module.exports = function(passport) {
     //       return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
     //   return done(null, user);
     // });
-    return done(null,{"id":"1","username":"test","email":email,"password":password},{message: '查询用户成功'});
+    // console.log('sessionId=',req.sessionId);
+    var currentSsid = req.sessionId;
+    var store= req.sessionStore;
+    store.get("123", (error, oldSession) => {
+      console.log("old session=", oldSession);
+    });
+    // console.log("email=",email);
+    if (email=="abcdef"){
+      console.log("if1");
+      return done(null,{"id":"1","username":"test","email":email,"password":password},{message: '查询用户成功'});
+    }
+    else{
+      console.log("else1");
+      return done(null);
+    }
+
   }));
 };

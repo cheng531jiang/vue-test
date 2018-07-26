@@ -20,18 +20,21 @@ function isLoggedIn(req, res, next) {
 
 
 router.post('/login', function(req, res, next) {
+  console.log("login");
   passport.authenticate('local-login', function(err, user, info) {
-    console.log("test");
-    console.log(user);
-    console.log(info);
+    user={"name":"abc","id":"123"}
     if (err) {
       return next(err); }
     if (!user) {
       res.status(200).json({ success: false, user: user, info: info });
     }else{
+      console.log('else3');
       req.logIn(user, err => {
-        if (err)  return next(err);
+
+        if (err)  {console.log(err);return next(err);}
         //res.cookie('islogined',true,{ expires: req.session.cookie._expires} );
+        console.log("user=",user);
+        console.log("info=",info);
         res.status(200).json({ success: true, user: user,info: info });
       });
     }
